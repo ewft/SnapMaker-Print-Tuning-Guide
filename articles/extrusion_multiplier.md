@@ -37,16 +37,6 @@ It is sometimes referred to as "flow", which can be confused with *volumetric fl
 
 ---
 
-## Cura Terminology
-
-Cura uses the term "flow" both for its extrusion multiplier *and* for its volumetric flow rate preview. They are separate concepts, however.
-- Cura's version of extrusion multiplier:
-    - [![](./images/extrusion_multiplier/cura_em.png)](./images/extrusion_multiplier/cura_em.png){:target="_blank"}
-- Cura's flow *rate* preview - not the same thing!
-    - [![](./images/extrusion_multiplier/cura_flowrate.png)](./images/extrusion_multiplier/cura_flowrate.png){:target="_blank"}
-
----
-
 ## Background
 
 {: .note }
@@ -69,8 +59,7 @@ We will print some 30x30x3mm cubes. *(see the [:page_facing_up: test_prints fold
 - **Top Layer [:page_facing_up: Line Width](./a_note_about_line_width.md):** 100%
    - :warning: Remember, [:page_facing_up: don't use these percentages in PS and Cura](./a_note_about_line_width.md). you must instead put the actual number in millimeters (e.g. **0.4** with a 0.4mm nozzle)
    - **SS/PS:** ctrl+f, search: `top_infill_extrusion_width`
-   - **Cura:** "Top/Bottom Line Width" - set to equal your nozzle size.
-    - I anecdotally find 100% to create a nice finish and show off EM differences the best.
+
 
 - **Bottom Layers:** 2
     - **SS/PS:** Also set "minimum shell thickness" to 0 **or it will override this.**
@@ -125,16 +114,7 @@ We will print some 30x30x3mm cubes. *(see the [:page_facing_up: test_prints fold
         7. Save the project for reuse later.\
         [![](./images/extrusion_multiplier/EM-Save.png)](./images/extrusion_multiplier/EM-Save.png){:target="_blank"}
         
-    - **Cura**
 
-        1. Select each cube and enable the "flow" setting.\
-        [![](./images/extrusion_multiplier/EM-PerObject-Cura.png)](./images/extrusion_multiplier/EM-PerObject-Cura.png){:target="_blank"}
-
-        3. Set the EM on each.\
-        [![](./images/extrusion_multiplier/EM-SetFlow-Cura.png)](./images/extrusion_multiplier/EM-SetFlow-Cura.png){:target="_blank"}
-
-        4. Save the project for reuse later.\
-        [![](./images/extrusion_multiplier/EM-Save-Cura.png)](./images/extrusion_multiplier/EM-Save-Cura.png){:target="_blank"}
 
 2. Print it!
 
@@ -223,27 +203,5 @@ My above method is an **aesthetics-first approach**. This method creates very sm
 
 Get your prints looking great first, THEN account for dimensions if needed. (in my opinion)
 
-### Voron Parts
-- Voron parts are designed with ABS shrinkage in mind. **You do not need any compensation apart from a good EM tune.**
 
-### If You Need True-to-CAD Dimensional Accuracy for Other Projects
-- Firstly, *adjust your expectations*. 
-    - Remember, our 3D printers are hobby-grade, glorified hot glue guns, not CNC. You will not reliably get 0.01mm tolerances everywhere.
-- After tuning EM:
-    - Try your slicer's **shrinkage compensation** settings.
-        - This is pretty much glorified X/Y part scaling. 
-            - Shrinkage occurs much less in the Z axis.
-            - 100%-101% X/Y scaling is about the range you would expect with ABS.
-        - Print any suitable test object and measure it. Ensure that you are measuring flat edges - not corner bulging or seams. Determine how much shrinkage compensation you need.
-    - **Don't mess with your `steps_per_mm`/`rotation_distance`**. Deviations are almost always from material shrinkage, bulging, layer inconsistencies, etc, NOT issues with your axes. Tinkering with these values will usually only add another variable.
-
-### Methods I'm Not a Fan Of
-- **Measuring Wall Thickness With Calipers**
-    - More on that [:page_facing_up: here](./misconceptions.md).
-
-- **SuperSlicer Calibration**
-    - SuperSlicer has a built-in flow calibration tool, however I do not like this either, for a few reasons:
-        - It uses 100% infill, so the first layer squish carries through all the way to the top. This causes your first layer squish to impact your results.
-        - It has ironing turned on by default.
-        - The objects are small. It's normal for [:page_facing_up: small infill areas to look a bit more overextruded than larger infill areas.](./troubleshooting/small_infill_areas_overextruded.md)
 
